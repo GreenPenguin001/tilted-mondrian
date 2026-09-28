@@ -1,0 +1,13 @@
+{
+  "experiment": "fixed_model_random_resplit_robustness",
+  "protocol": "combine calibration, repair, and test only; preserve source split sizes; never include train",
+  "number_of_splits": 50,
+  "seed_start": 1001,
+  "reported_ess_split": "test",
+  "adequate_ess_fraction_thresholds": {
+    "biobias": 0.5,
+    "folktables_design_a": 0.5,
+    "folktables_design_b": 0.5,
+    "atus": 0.9
+  }
+}

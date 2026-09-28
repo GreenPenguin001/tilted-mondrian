@@ -1,0 +1,79 @@
+design_name: design_A_occupation_education
+target: OCCP_topK
+group: SEX
+audit: SCHL_education_bucket
+states: all
+years: [2014, 2015, 2016, 2017, 2018]
+acs:
+  survey: person
+  horizon: 1-Year
+  data_root: ../data/folktables_acs
+  download: true
+  density: 1.0
+task:
+  top_k: 10
+  z_in_x: true
+  education_buckets:
+    - id: 0
+      name: Less than high school
+      min_schl: 1
+      max_schl: 15
+    - id: 1
+      name: High school or GED
+      min_schl: 16
+      max_schl: 17
+    - id: 2
+      name: Some college or associate
+      min_schl: 18
+      max_schl: 20
+    - id: 3
+      name: Bachelor
+      min_schl: 21
+      max_schl: 21
+    - id: 4
+      name: Graduate or professional
+      min_schl: 22
+      max_schl: 24
+features:
+  excluded_columns:
+    - OCCP
+    - SOCP
+    - FOCCP
+    - SEX
+    - FSEXP
+    - FSCHLP
+    - SERIALNO
+    - SPORDER
+    - RT
+    - ST
+    - PUMA
+    - PWGTP
+  exclude_weight_prefixes:
+    - PWGTP
+splits:
+  train: 0.40
+  cal: 0.25
+  repair: 0.25
+  test: 0.10
+random_seed: 20260609
+model:
+  type: hist_gradient_boosting
+  max_iter: 160
+  learning_rate: 0.06
+  max_leaf_nodes: 31
+  l2_regularization: 0.01
+conformal:
+  score: simple
+  threshold_policy: pooled
+  alpha_grid: dense_safe
+diagnostics:
+  n_min: 200
+  alpha0: 0.10
+propensity:
+  target: G
+  feature_mode: safe_topk
+  top_k: 3
+  weight_scheme: overlap
+  clip: 0.03
+  trim_quantile: 0.95
+  max_weight: 3.0

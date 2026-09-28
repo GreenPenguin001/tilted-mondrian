@@ -1,0 +1,32 @@
+{
+  "biobias": {
+    "input_subdirectory": "biobias/table1/seed_4/probabilities",
+    "resplit_stratification": ["joint_G_Y", "Y", "unstratified_exception_fallback"],
+    "scores": ["simple", "aps", "saps", "raps"],
+    "threshold_policy": "groupwise",
+    "reported_ess_split": "test"
+  },
+  "folktables_design_a": {
+    "input_subdirectory": "folktables_design_a",
+    "years": [2014, 2015, 2016, 2017, 2018],
+    "resplit_stratification": ["joint_Y_G_Z", "Y", "unstratified_exception_fallback"],
+    "scores": ["simple"],
+    "threshold_policy": "pooled",
+    "reported_ess_split": "test"
+  },
+  "folktables_design_b": {
+    "input_subdirectory": "folktables_design_b",
+    "years": [2014, 2015, 2016, 2017, 2018],
+    "resplit_stratification": ["joint_G_Z", "unstratified_exception_fallback"],
+    "scores": ["simple"],
+    "threshold_policy": "pooled",
+    "reported_ess_split": "test"
+  },
+  "atus": {
+    "input_subdirectory": "atus",
+    "resplit_stratification": ["unstratified_respondent_shuffle", "contiguous_slices"],
+    "scores": ["simple", "aps", "raps", "saps"],
+    "threshold_policy": "pooled",
+    "reported_ess_split": "test"
+  }
+}

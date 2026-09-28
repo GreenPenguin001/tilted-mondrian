@@ -1,0 +1,68 @@
+{
+  "data_dir": "ATUS/atus_activity_curve/data/raw_0324",
+  "extract_dir": "ATUS/atus_activity_curve/data/extracted_0324",
+  "default_design": "primary_sex_employment_top20",
+  "model": "hist_gradient_boosting",
+  "selected_hgb_params": {
+    "run_name": "hgb_regularized",
+    "max_iter": 700,
+    "learning_rate": 0.03,
+    "max_leaf_nodes": 31,
+    "l2_regularization": 0.1,
+    "min_samples_leaf": 50
+  },
+  "designs": {
+    "primary_sex_employment_top20": {
+      "unit": "one_episode_per_respondent",
+      "y_tier2_top_k": 20,
+      "exclude_data_code_activities": true,
+      "group": "sex",
+      "z": "employment",
+      "model": "hist_gradient_boosting",
+      "max_train_examples": null
+    },
+    "primary_sex_employment_top15": {
+      "unit": "one_episode_per_respondent",
+      "y_tier2_top_k": 15,
+      "exclude_data_code_activities": true,
+      "group": "sex",
+      "z": "employment",
+      "model": "hist_gradient_boosting",
+      "max_train_examples": null
+    }
+  },
+  "hgb_tuning_grid": [
+    {
+      "run_name": "hgb_default",
+      "max_iter": 150,
+      "learning_rate": 0.06,
+      "max_leaf_nodes": 31,
+      "l2_regularization": 0.001,
+      "min_samples_leaf": 20
+    },
+    {
+      "run_name": "hgb_more_iter_lr005",
+      "max_iter": 500,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 31,
+      "l2_regularization": 0.01,
+      "min_samples_leaf": 20
+    },
+    {
+      "run_name": "hgb_more_leaves",
+      "max_iter": 500,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 63,
+      "l2_regularization": 0.05,
+      "min_samples_leaf": 30
+    },
+    {
+      "run_name": "hgb_regularized",
+      "max_iter": 700,
+      "learning_rate": 0.03,
+      "max_leaf_nodes": 31,
+      "l2_regularization": 0.1,
+      "min_samples_leaf": 50
+    }
+  ]
+}

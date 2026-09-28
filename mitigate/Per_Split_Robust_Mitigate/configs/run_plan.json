@@ -1,0 +1,11 @@
+{
+  "experiment": "table2_all_score_fixed_model_random_resplit",
+  "number_of_resplits_per_configuration": 20,
+  "optimizer_seed": 2026,
+  "scores": ["simple", "aps", "raps", "saps"],
+  "fixed_model": true,
+  "nontraining_pool": ["calibration", "repair", "test"],
+  "preserve_source_split_sizes": true,
+  "train_rows_in_pool": 0,
+  "negative_test_outcomes_retained": true
+}
